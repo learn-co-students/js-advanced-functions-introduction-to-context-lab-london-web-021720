@@ -72,9 +72,9 @@ const findEmployeeByFirstName = (employeeRecords, firstName) => {
 }
 
 const calculatePayroll = (employeeRecords) => {
-    let sumOfAllCompanyWages = 0
-    employeeRecords.forEach(employee => {
-        sumOfAllCompanyWages = sumOfAllCompanyWages + allWagesFor(employee)
-    });
+    const employeePay = employeeRecords.map(employee => allWagesFor(employee))
+    const sumOfAllCompanyWages = employeePay.reduce( (acc, i) => {
+        return acc + i
+    })
     return sumOfAllCompanyWages
 }
